@@ -1,11 +1,11 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var TestUtils = require('react-addons-test-utils');
-var expect = require('expect');
-var $ = require('jQuery');
+import React from 'react'
+import ReactDOM from 'react-dom'
+import TestUtils from 'react-addons-test-utils'
+import expect from 'expect'
+import $ from 'jQuery'
 
-var TodoList = require('TodoList');
-var Todo = require('Todo');
+import TodoList from 'TodoList'
+import Todo from 'Todo'
 
 describe('TodoList', () => {
   it('should exist', () => {

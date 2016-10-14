@@ -1,7 +1,6 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react'
 
-var Todo = require('Todo');
+import Todo from 'Todo'
 
 class TodoList extends React.Component {
   render () {
@@ -22,7 +21,7 @@ class TodoList extends React.Component {
   }
 }
 TodoList.propTypes = {
-  todos: React.PropTypes.array.isRequired
+  todos: PropTypes.array.isRequired
 }
 
-module.exports = TodoList;
+export default TodoList;

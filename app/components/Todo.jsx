@@ -1,5 +1,4 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react'
 
 class Todo extends React.Component {
 
@@ -14,4 +13,4 @@ class Todo extends React.Component {
 
 }
 
-module.exports = Todo;
+export default Todo;

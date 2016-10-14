@@ -1,7 +1,7 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react'
 
-var TodoList = require('TodoList');
+import TodoList from 'TodoList'
+import AddTodo from 'AddTodo'
 
 class TodoApp extends React.Component {
 
@@ -26,17 +26,20 @@ class TodoApp extends React.Component {
       ]
     }
   }
-
+  handleAddTodo (text) {
+    alert('new todo: ' + text);
+  }
   render () {
     var {todos} = this.state;
 
     return (
       <div>
         <TodoList todos={todos}/>
+        <AddTodo onAddTodo={this.handleAddTodo}/>
       </div>
     );
   }
 
 }
 
-module.exports = TodoApp;
+export default TodoApp;
