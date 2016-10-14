@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 
 import TodoList from 'TodoList'
 import AddTodo from 'AddTodo'
+import TodoSearch from 'TodoSearch'
 
 class TodoApp extends React.Component {
 
@@ -23,8 +24,16 @@ class TodoApp extends React.Component {
           id: 4,
           text: 'Go to work...'
         }
-      ]
+      ],
+      showCompleted: false,
+      searchText: ''
     }
+  }
+  handleSearch = (showCompleted, searchText) => {
+    this.setState({
+      showCompleted: showCompleted,
+      searchText: searchText.toLowerCase()
+    });
   }
   handleAddTodo (text) {
     alert('new todo: ' + text);
@@ -34,6 +43,7 @@ class TodoApp extends React.Component {
 
     return (
       <div>
+        <TodoSearch onSearch={this.handleSearch}/>
         <TodoList todos={todos}/>
         <AddTodo onAddTodo={this.handleAddTodo}/>
       </div>
