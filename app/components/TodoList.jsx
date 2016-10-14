@@ -16,7 +16,6 @@ class TodoList extends React.Component {
 
     return (
       <div>
-        <p>TodoList.jsx</p>
         {renderTodos()}
       </div>
     );

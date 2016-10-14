@@ -32,7 +32,6 @@ class TodoApp extends React.Component {
 
     return (
       <div>
-        <p>TodoApp.jsx</p>
         <TodoList todos={todos}/>
       </div>
     );
