@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import uuid from 'node-uuid'
 
 import TodoList from 'TodoList'
 import AddTodo from 'AddTodo'
@@ -12,16 +13,16 @@ class TodoApp extends React.Component {
     this.state = {
       todos: [
         {
-          id: 1,
+          id: uuid(),
           text: 'Walk the dog'
         }, {
-          id: 2,
+          id: uuid(),
           text: 'Clean the yard'
         }, {
-          id: 3,
+          id: uuid(),
           text: 'Complete Todo App'
         }, {
-          id: 4,
+          id: uuid(),
           text: 'Go to work...'
         }
       ],
@@ -35,8 +36,16 @@ class TodoApp extends React.Component {
       searchText: searchText.toLowerCase()
     });
   }
-  handleAddTodo (text) {
-    alert('new todo: ' + text);
+  handleAddTodo = (text) => {
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          id: uuid(),
+          text: text
+        }
+      ]
+    });
   }
   render () {
     var {todos} = this.state;
