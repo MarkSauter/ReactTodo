@@ -3,10 +3,13 @@ import React, { PropTypes } from 'react'
 class Todo extends React.Component {
 
   render () {
-    var {id, text} = this.props;
+    var {id, text, completed} = this.props;
     return (
-      <div>
-        {id}. {text}
+      <div onClick={() => {
+          this.props.onToggle(id);
+        }}>
+        <input type="checkbox" checked={completed}/>
+        {text}
       </div>
     );
   }
