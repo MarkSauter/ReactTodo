@@ -2,7 +2,7 @@ import expect from 'expect'
 
 import * as actions from 'actions'
 
-describe('actions', () => {
+describe('Actions', () => {
   it('should generate search text action', () => {
     var action = {
       type: 'SET_SEARCH_TEXT',
