@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import * as actions from 'actions'
 
 export class AddTodo extends React.Component {
-
   handleSubmit = (e) => {
     e.preventDefault();
     var {dispatch} = this.props;
@@ -26,10 +25,6 @@ export class AddTodo extends React.Component {
       </div>
     );
   }
-
-}
-AddTodo.propTypes = {
-  onAddTodo: PropTypes.func.isRequired
 }
 
 export default connect()(AddTodo);
