@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react'
+import {connect} from 'react-redux'
 
 import Todo from 'Todo'
 
-class TodoList extends React.Component {
+export class TodoList extends React.Component {
   render () {
     var {todos} = this.props;
     var renderTodos = () => {
@@ -13,7 +14,7 @@ class TodoList extends React.Component {
       }
       return todos.map((todo) => {
         return (
-          <Todo key={todo.id} {...todo} onToggle={this.props.onToggle}/>
+          <Todo key={todo.id} {...todo}/>
         );
       });
     };
@@ -29,4 +30,10 @@ TodoList.propTypes = {
   todos: PropTypes.array.isRequired
 }
 
-export default TodoList;
+export default connect(
+  (state) => {
+    return {
+      todos: state.todos
+    };
+  }
+)(TodoList);

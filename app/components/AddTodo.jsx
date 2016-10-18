@@ -1,15 +1,17 @@
 import React, { PropTypes } from 'react'
+import {connect} from 'react-redux'
+import * as actions from 'actions'
 
-class AddTodo extends React.Component {
+export class AddTodo extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
+    var {dispatch} = this.props;
     var todoText = this.refs.todoText.value;
 
     if (todoText.length > 0) {
       this.refs.todoText.value = '';
-      this.props.onAddTodo(todoText);
+      dispatch(actions.addTodo(todoText));
     } else {
       this.refs.todoText.focus();
     }
@@ -30,4 +32,4 @@ AddTodo.propTypes = {
   onAddTodo: PropTypes.func.isRequired
 }
 
-export default AddTodo;
+export default connect()(AddTodo);
