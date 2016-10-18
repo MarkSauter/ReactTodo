@@ -31,7 +31,7 @@ class TodoApp extends React.Component {
       return todo;
     });
 
-    this.setState({updatedTodos})
+    this.setState({updatedTodos});
   }
   handleSearch = (showCompleted, searchText) => {
     this.setState({
