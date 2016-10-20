@@ -4,7 +4,6 @@ import {Provider} from 'react-redux'
 import {Route, Router, IndexRoute, hashHistory} from 'react-router'
 
 import TodoApp from 'TodoApp';
-
 import * as actions from 'actions'
 var store = require('configureStore').configure();
 import TodoAPI from 'TodoAPI'
