@@ -10,6 +10,7 @@ export class TodoList extends React.Component {
 
     var renderTodos = () => {
       var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
+
       if (filteredTodos.length === 0) {
         return (
           <p className="container__message">Nothing To Do...</p>
