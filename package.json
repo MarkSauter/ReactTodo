@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test karma start",
-    "build": "webpack",
-    "start": "npm run build && node server.js"
+    /*"build": "webpack",*/
+    "start": "node server.js"
   },
   "author": "Mark Sauter",
   "license": "MIT",
@@ -16,8 +16,7 @@
     "firebase": "^3.5.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "react-router": "^2.0.0",
-
+    "react-router": "^2.0.0"
   },
   "devDependencies": {
     "karma": "^0.13.22",
