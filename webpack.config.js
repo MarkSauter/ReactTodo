@@ -18,6 +18,11 @@ module.exports = {
       'jQuery': 'jquery',
       'window.jQuery': 'jquery'
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     })
@@ -38,7 +43,8 @@ module.exports = {
       appplicationStyle: 'app/styles/app.scss',
       actions: 'app/actions/actions.jsx',
       reducers: 'app/reducers/reducers.jsx',
-      configureStore: 'app/store/configureStore.jsx'
+      configureStore: 'app/store/configureStore.jsx',
+      jquery: 'jquery/src/jquery'
     },
     extensions: ['', '.js', '.jsx']
   },
