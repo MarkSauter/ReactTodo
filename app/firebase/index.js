@@ -2,11 +2,11 @@ import firebase from 'firebase';
 
 try {
   var config = {
-    apiKey: "AIzaSyCGMeBJDFh5A4VUlXBcJE2nikrDFu-gWdI",
-    authDomain: "sauter-todo-app.firebaseapp.com",
-    databaseURL: "https://sauter-todo-app.firebaseio.com",
-    storageBucket: "sauter-todo-app.appspot.com",
-    messagingSenderId: "947020733751"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDER_ID
   };
 
   firebase.initializeApp(config);
