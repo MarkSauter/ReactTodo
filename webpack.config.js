@@ -9,15 +9,15 @@ module.exports = {
     'script!foundation-sites/dist/foundation.min.js',
     './app/app.jsx'
   ],
-  externals: {
-    jquery: 'jQuery'
-  },
+  // externals: {
+  //   jquery: 'jQuery'
+  // },
   plugins: [
-    new webpack.ProvidePlugin({
-      '$': 'jquery',
-      'jQuery': 'jquery',
-      'window.jQuery': 'jquery'
-    }),
+    // new webpack.ProvidePlugin({
+    //   '$': 'jquery',
+    //   'jQuery': 'jquery',
+    //   'window.jQuery': 'jquery'
+    // }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false
