@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import $ from 'jQuery'
 
 export default {
   filterTodos: (todos, showCompleted, searchText) => {
