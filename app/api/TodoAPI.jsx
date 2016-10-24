@@ -9,7 +9,7 @@ export default {
     // Filter by searchText
     filteredTodos = filteredTodos.filter((todo) => {
       var text = todo.text.toLowerCase();
-      return text.includes(searchText);
+      return text.includes(searchText.toLowerCase());
     });
     // Sort todos with non-completed first
     filteredTodos.sort((a, b) => {
