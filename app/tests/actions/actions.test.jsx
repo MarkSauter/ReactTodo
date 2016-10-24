@@ -9,17 +9,17 @@ var createMockStore = configureMockStore([thunk]);
 
 describe('Actions', () => {
   it('should generate search text action', () => {
-    var action = {
+    const action = {
       type: 'SET_SEARCH_TEXT',
       searchText: 'Some search text'
     };
-    var res = actions.setSearchText(action.searchText);
+    const res = actions.setSearchText(action.searchText);
 
     expect(res).toEqual(action);
   });
 
   it('should generate add todo action', () => {
-    var action = {
+    const action = {
       type: 'ADD_TODO',
       todo: {
         id: 'abc123',
@@ -28,7 +28,7 @@ describe('Actions', () => {
         createdAt: 92384237
       }
     };
-    var res = actions.addTodo(action.todo);
+    const res = actions.addTodo(action.todo);
 
     expect(res).toEqual(action);
   });
@@ -50,38 +50,57 @@ describe('Actions', () => {
   });
 
   it('should generate add todos action', () => {
-    var todos = [{
+    const todos = [{
       id: '111',
       text: 'Thing to do',
       completed: false,
       createdAt: 33000,
       completedAt: undefined
     }];
-    var action = {
+    const action = {
       type: 'ADD_TODOS',
       todos
     };
-    var res = actions.addTodos(todos);
+    const res = actions.addTodos(todos);
 
     expect(res).toEqual(action);
   });
 
   it('should generate toggle show completed action', () => {
-    var action = {
+    const action = {
       type: 'TOGGLE_SHOW_COMPLETED'
     };
-    var res = actions.toggleShowCompleted();
+    const res = actions.toggleShowCompleted();
 
     expect(res).toEqual(action);
   });
 
   it('should generate update todo action', () => {
-    var action = {
+    const action = {
       type: 'UPDATE_TODO',
       id: '123',
       updates: {completed: false}
     };
-    var res = actions.updateTodo(action.id, action.updates);
+    const res = actions.updateTodo(action.id, action.updates);
+
+    expect(res).toEqual(action);
+  });
+
+  it('should generate login action', () => {
+    const action = {
+      type: 'LOGIN',
+      uid: 'abc123'
+    };
+    const res = actions.login(action.uid);
+
+    expect(res).toEqual(action);
+  });
+
+  it('should generate logout action', () => {
+    const action = {
+      type: 'LOGOUT'
+    };
+    const res = actions.logout();
 
     expect(res).toEqual(action);
   });
@@ -90,7 +109,7 @@ describe('Actions', () => {
     var testTodoRef;
 
     beforeEach((done) => {
-      var todosRef = firebaseRef.child('todos');
+      const todosRef = firebaseRef.child('todos');
 
       todosRef.remove().then(() => {
         testTodoRef = todosRef.push();

@@ -6,11 +6,11 @@ import * as reducers from 'reducers'
 describe('Reducers', () => {
   describe('searchTextReducer', () => {
     it('should set searchText', () => {
-      var action = {
+      const action = {
         type: 'SET_SEARCH_TEXT',
         searchText: 'Some search text'
       };
-      var res = reducers.searchTextReducer(df(''), df(action));
+      const res = reducers.searchTextReducer(df(''), df(action));
 
       expect(res).toEqual(action.searchText);
     });
@@ -18,10 +18,10 @@ describe('Reducers', () => {
 
   describe('showCompletedReducer', () => {
     it('should toggle showCompleted', () => {
-      var action = {
+      const action = {
         type: 'TOGGLE_SHOW_COMPLETED'
       };
-      var res = reducers.showCompletedReducer(df(false), df(action));
+      const res = reducers.showCompletedReducer(df(false), df(action));
 
       expect(res).toBe(true);
     });
@@ -29,7 +29,7 @@ describe('Reducers', () => {
 
   describe('todosReducer', () => {
     it('should add new todo', () => {
-      var action = {
+      const action = {
         type: 'ADD_TODO',
         todo: {
           id: 'abc123',
@@ -38,52 +38,78 @@ describe('Reducers', () => {
           createdAt: 92384237
         }
       };
-      var res = reducers.todosReducer(df([]), df(action));
+      const res = reducers.todosReducer(df([]), df(action));
 
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(action.todo);
     });
 
     it('should add existing todos', () => {
-      var todos = [{
+      const todos = [{
         id: '111',
         text: 'Thing to do',
         completed: false,
         createdAt: 33000,
         completedAt: undefined
       }];
-      var action = {
+      const action = {
         type: 'ADD_TODOS',
         todos
       };
-      var res = reducers.todosReducer(df([]), df(action));
+      const res = reducers.todosReducer(df([]), df(action));
 
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(todos[0]);
     });
 
     it('should update todo', () => {
-      var todos = [{
+      const todos = [{
         id: '123',
         text: 'Thing to do',
         completed: true,
         createdAt: 123,
         completedAt: 125
       }];
-      var updates = {
+      const updates = {
         completed: false,
         completedAt: null
       }
-      var action = {
+      const action = {
         type: 'UPDATE_TODO',
         id: todos[0].id,
         updates
       }
-      var res = reducers.todosReducer(df(todos), df(action));
+      const res = reducers.todosReducer(df(todos), df(action));
 
       expect(res[0].completed).toEqual(updates.completed);
       expect(res[0].completedAt).toEqual(updates.completedAt);
       expect(res[0].text).toEqual(todos[0].text);
+    });
+  });
+  describe('authReducer', () => {
+    it('should store uid on LOGIN', () => {
+      const auth = {};
+      const action = {
+        type: 'LOGIN',
+        uid: 'abc123'
+      };
+      const res = reducers.authReducer(df(auth), df(action));
+
+      expect(res).toEqual({
+        uid: action.uid
+      });
+    });
+
+    it('should wipe auth on LOGOUT', () => {
+      const auth = {
+        uid: 'abc123'
+      };
+      const action = {
+        type: 'LOGOUT'
+      };
+      const res = reducers.authReducer(df(auth), df(action));
+
+      expect(res).toEqual({});
     });
   });
 });

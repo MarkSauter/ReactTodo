@@ -89,20 +89,41 @@ export var startToggleTodo = (id, completed) => {
   };
 };
 
+export var login = (uid) => {
+  return {
+    type: 'LOGIN',
+    uid
+  };
+};
+
 export var startLogin = () => {
   return (dispatch, getState) => {
     return firebase.auth().signInWithPopup(githubProvider).then((result) => {
+      var authRef = firebaseRef.child('auth');
       console.log('Auth worked!', result);
+      return authRef.set({uid: result.user.uid}).then(() => {
+        dispatch(login(result.user.uid));
+      });
     }).catch((error) => {
       console.log('Unable to auth', error);
     });
   };
 };
 
+export var logout = () => {
+  return {
+    type: 'LOGOUT'
+  };
+};
+
 export var startLogout = () => {
   return (dispatch, getState) => {
     return firebase.auth().signOut().then(() => {
+      var authRef = firebaseRef.child('auth');
       console.log('Logged out!');
+      return authRef.set({}).then(() => {
+        dispatch(logout());
+      });
     });
   };
 };
