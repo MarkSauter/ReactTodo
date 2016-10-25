@@ -1,20 +1,24 @@
-import React, { PropTypes } from 'react'
-import * as redux from 'react-redux'
+import React from 'react';
+import * as redux from 'react-redux';
+import autoBind from 'react-autobind';
 
-
-import TodoList from 'TodoList'
-import AddTodo from 'AddTodo'
-import TodoSearch from 'TodoSearch'
-import * as actions from 'actions'
+import TodoList from 'TodoList';
+import AddTodo from 'AddTodo';
+import TodoSearch from 'TodoSearch';
+import * as actions from 'actions';
 
 export class TodoApp extends React.Component {
-  onLogout = (e) => {
-    var {dispatch} = this.props;
+  constructor() {
+    super();
+    autoBind(this);
+  }
+  onLogout(e) {
+    const {dispatch} = this.props;
     e.preventDefault();
 
     dispatch(actions.startLogout());
   }
-  render () {
+  render() {
     return (
       <div>
         <div className="page-actions">

@@ -1,16 +1,16 @@
-import React, { PropTypes } from 'react'
-import {connect} from 'react-redux'
-import moment from 'moment'
-import * as actions from 'actions'
+import React from 'react';
+import {connect} from 'react-redux';
+import moment from 'moment';
+import * as actions from 'actions';
 
 export class Todo extends React.Component {
 
-  render () {
-    var {id, text, completed, createdAt, completedAt, dispatch} = this.props;
-    var todoClassName = completed ? 'todo todo-completed' : 'todo';
-    var renderDate = () => {
-      var message = 'Created ';
-      var timestamp = createdAt;
+  render() {
+    const {id, text, completed, createdAt, completedAt, dispatch} = this.props;
+    const todoClassName = completed ? 'todo todo-completed' : 'todo';
+    const renderDate = () => {
+      let message = 'Created ';
+      let timestamp = createdAt;
 
       if (completed) {
         message = 'Completed ';

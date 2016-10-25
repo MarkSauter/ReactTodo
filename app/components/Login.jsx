@@ -1,15 +1,20 @@
-import React, { PropTypes } from 'react'
-import * as redux from 'react-redux'
+import React from 'react';
+import * as redux from 'react-redux';
+import autoBind from 'react-autobind';
 
-import * as actions from 'actions'
+import * as actions from 'actions';
 
 class Login extends React.Component {
-  onLogin = () => {
-    var {dispatch} = this.props;
+  constructor() {
+    super();
+    autoBind(this);
+  }
+  onLogin() {
+    const {dispatch} = this.props;
 
     dispatch(actions.startLogin());
   }
-  render () {
+  render() {
     return (
       <div>
         <h1 className="page-title">Todo App</h1>
@@ -20,7 +25,9 @@ class Login extends React.Component {
               <p>
                 Login with GitHub account below.
               </p>
-              <button className="button" onClick={this.onLogin}>Login With GitHub</button>
+              <button
+                className="button" onClick={this.onLogin}>Login With GitHub
+              </button>
             </div>
           </div>
         </div>

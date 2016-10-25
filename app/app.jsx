@@ -1,12 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {Provider} from 'react-redux'
-import {hashHistory} from 'react-router'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import {hashHistory} from 'react-router';
 
-import * as actions from 'actions'
-var store = require('configureStore').configure();
-import firebase from 'app/firebase/'
-import router from 'app/router/'
+import * as actions from 'actions';
+import {configure} from 'configureStore';
+import firebase from 'app/firebase/';
+import router from 'app/router/';
+
+const store = configure();
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
@@ -23,7 +25,7 @@ firebase.auth().onAuthStateChanged((user) => {
 $(document).foundation();
 
 // App css
-require('style!css!sass!appplicationStyle')
+require('style!css!sass!appplicationStyle');
 
 ReactDOM.render(
   <Provider store={store}>

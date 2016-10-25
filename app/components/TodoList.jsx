@@ -1,15 +1,16 @@
-import React, { PropTypes } from 'react'
-import {connect} from 'react-redux'
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
 
-import Todo from 'Todo'
-import TodoAPI from 'TodoAPI'
+import Todo from 'Todo';
+import TodoAPI from 'TodoAPI';
 
 export class TodoList extends React.Component {
-  render () {
-    var {todos, showCompleted, searchText} = this.props;
+  render() {
+    const {todos, showCompleted, searchText} = this.props;
 
-    var renderTodos = () => {
-      var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
+    const renderTodos = () => {
+      const filteredTodos = TodoAPI.filterTodos(
+        todos, showCompleted, searchText);
 
       if (filteredTodos.length === 0) {
         return (
@@ -31,8 +32,8 @@ export class TodoList extends React.Component {
   }
 }
 TodoList.propTypes = {
-  todos: PropTypes.array.isRequired
-}
+  todos: PropTypes.array.isRequired,
+};
 
 export default connect(
   (state) => {

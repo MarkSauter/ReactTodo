@@ -1,17 +1,17 @@
-import configureMockStore from 'redux-mock-store'
-import thunk from 'redux-thunk'
-import expect from 'expect'
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import expect from 'expect';
 
-import firebase, {firebaseRef} from 'app/firebase'
-import * as actions from 'actions'
+import firebase, {firebaseRef} from 'app/firebase';
+import * as actions from 'actions';
 
-var createMockStore = configureMockStore([thunk]);
+const createMockStore = configureMockStore([thunk]);
 
 describe('Actions', () => {
   it('should generate search text action', () => {
     const action = {
       type: 'SET_SEARCH_TEXT',
-      searchText: 'Some search text'
+      searchText: 'Some search text',
     };
     const res = actions.setSearchText(action.searchText);
 
@@ -25,8 +25,8 @@ describe('Actions', () => {
         id: 'abc123',
         text: 'Thing to do',
         completed: false,
-        createdAt: 92384237
-      }
+        createdAt: 92384237,
+      },
     };
     const res = actions.addTodo(action.todo);
 
@@ -39,11 +39,11 @@ describe('Actions', () => {
       text: 'Thing to do',
       completed: false,
       createdAt: 33000,
-      completedAt: undefined
+      completedAt: undefined,
     }];
     const action = {
       type: 'ADD_TODOS',
-      todos
+      todos,
     };
     const res = actions.addTodos(todos);
 
@@ -52,7 +52,7 @@ describe('Actions', () => {
 
   it('should generate toggle show completed action', () => {
     const action = {
-      type: 'TOGGLE_SHOW_COMPLETED'
+      type: 'TOGGLE_SHOW_COMPLETED',
     };
     const res = actions.toggleShowCompleted();
 
@@ -63,7 +63,7 @@ describe('Actions', () => {
     const action = {
       type: 'UPDATE_TODO',
       id: '123',
-      updates: {completed: false}
+      updates: {completed: false},
     };
     const res = actions.updateTodo(action.id, action.updates);
 
@@ -73,7 +73,7 @@ describe('Actions', () => {
   it('should generate login action', () => {
     const action = {
       type: 'LOGIN',
-      uid: 'abc123'
+      uid: 'abc123',
     };
     const res = actions.login(action.uid);
 
@@ -82,7 +82,7 @@ describe('Actions', () => {
 
   it('should generate logout action', () => {
     const action = {
-      type: 'LOGOUT'
+      type: 'LOGOUT',
     };
     const res = actions.logout();
 
@@ -90,9 +90,9 @@ describe('Actions', () => {
   });
 
   describe('Tests with firebase todos', () => {
-    var testTodoRef;
-    var uid;
-    var todosRef;
+    let testTodoRef;
+    let uid;
+    let todosRef;
 
     beforeEach((done) => {
       firebase.auth().signInAnonymously().then((user) => {
@@ -106,7 +106,7 @@ describe('Actions', () => {
           return testTodoRef.set({
             text: 'Thing to do',
             completed: false,
-            createdAt: 213412
+            createdAt: 213412,
           });
       })
       .then(() => done())
@@ -129,7 +129,7 @@ describe('Actions', () => {
           id: testTodoRef.key,
         });
         expect(mockActions[0].updates).toInclude({
-          completed: true
+          completed: true,
         });
         expect(mockActions[0].updates.completedAt).toExist();
 
@@ -159,10 +159,10 @@ describe('Actions', () => {
       store.dispatch(actions.startAddTodo(todoText)).then(() => {
         const actions = store.getActions();
         expect(actions[0]).toInclude({
-          type: 'ADD_TODO'
+          type: 'ADD_TODO',
         });
         expect(actions[0].todo).toInclude({
-          text: todoText
+          text: todoText,
         });
         done();
       }).catch(done);

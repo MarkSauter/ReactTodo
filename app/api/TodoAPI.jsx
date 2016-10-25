@@ -1,6 +1,6 @@
 export default {
   filterTodos: (todos, showCompleted, searchText) => {
-    var filteredTodos = todos;
+    let filteredTodos = todos;
 
     // Filter by showCompleted
     filteredTodos = filteredTodos.filter((todo) => {
@@ -8,7 +8,7 @@ export default {
     });
     // Filter by searchText
     filteredTodos = filteredTodos.filter((todo) => {
-      var text = todo.text.toLowerCase();
+      const text = todo.text.toLowerCase();
       return text.includes(searchText.toLowerCase());
     });
     // Sort todos with non-completed first
@@ -24,5 +24,5 @@ export default {
     });
 
     return filteredTodos;
-  }
+  },
 };
